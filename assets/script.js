@@ -2,13 +2,31 @@
 var password=document.getElementById("password")
 
 var password = function () {
-  var promptPasswordCriteria = window.prompt ('Please select from the following to have included in your password.');
+  var promptPasswordCriteria = window.prompt ('What characters would you like to have in your password? Press 1 for lowercase, 2 for uppercase, 3 for numeric, 4 for special characters.');
 
-  // Validate prompt answer
-  if (promptPasswordCriteria === "" || promptPasswordCriteria === null) {
-    window.alert("You need to provide a valid answer! Please try again.")
-    // use return to call it again and stop the rest of this fucntion from running
-    return password();
+  promptPasswordCriteria = parseInt(promptPasswordCriteria);
+
+  // use switch case to carry out action
+  switch (promptPasswordCriteria) {
+      case 1:
+          password.lowerCase();
+          break;
+          case 2:
+              password.upperCase();
+              break;
+              case 3:
+                  password.numeric();
+                  break;
+                  case 4:
+                      password.specialcharacters();
+                      break;
+                      default:
+                          window.alert("You did not pick a valid option. Try again.")
+                          password();
+                          break;
+  }
+
+  var passwordFormat = {
   }
 
   
