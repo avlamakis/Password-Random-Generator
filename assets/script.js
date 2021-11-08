@@ -1,44 +1,30 @@
 // Assignment code here
-var password=document.getElementById("password")
+var password = document.getElementById("password");
 
-var password = function () {
-  var promptPasswordCriteria = window.prompt ('What characters would you like to have in your password? Press 1 for lowercase, 2 for uppercase, 3 for numeric, 4 for special characters.');
+var generatePassword = function () {
+    // Prompt for password criteria
+    var passwordCriteria = window.prompt("Which would you like to include in your password? 1 for LOWERCASE, 2 for UPPERCASE, 3 for NUMERIC, 4 for SPECIAL CHARACTERS, 5 for ALL");
 
-  promptPasswordCriteria = parseInt(promptPasswordCriteria);
-
-  // use switch case to carry out action
-  switch (promptPasswordCriteria) {
-      case 1:
-          password.lowerCase();
-          break;
-          case 2:
-              password.upperCase();
-              break;
-              case 3:
-                  password.numeric();
-                  break;
-                  case 4:
-                      password.specialcharacters();
-                      break;
-                      default:
-                          window.alert("You did not pick a valid option. Try again.")
-                          password();
-                          break;
+      // validate prompt answer
+  if (passwordCriteria === "" || passwordCriteria === null) {
+    window.alert("You need to provide a valid answer! Please try again.");
+    // use return to call it again and stop the rest of this function from running
+    return fightOrSkip();
   }
 
-  var passwordFormat = {
-  }
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = '8,128'
+    var password = "";
 
-  
-  for (var i = 0; i <= passwordLength; i++) {
-    var randomNumber = Math.floor(Math.random() * chars.length);
-    password += chars.substring(randomNumber, randomNumber +1);
-  }
-
-  // Prompt for password criteria
-  // Ask user how long they would like the password to be? Minimum of 8 characters and a max of 128 characters
-  // Ask the user to confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
+    for (var i = 0; i <= passwordLength; i++) {
+        var randomNumber = Math.floor(Math.random() * chars.length);
+        password += chars.substring(randomNumber, randomNumber + 1);
+    }
+    document.getElementById("password").value = password;
 }
+
+// Ask user how long they would like the password to be? Minimum of 8 characters and a max of 128 characters
+// Ask the user to confirm whether or not to include lowercase, uppercase, numeric, and/or special character
 
 
 // Get references to the #generate element
@@ -46,10 +32,10 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+    passwordText.value = password;
 
 }
 
