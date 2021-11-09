@@ -1,6 +1,6 @@
 // Assignment code here
 function generatePassword( len ) {
-  var length = (len)?(len):(8,128);
+  var length = (len)?(len):(i < 8, i >128);
   var string = "abcdefghijklmnopqrstuvwxyz"; //to upper 
   var numeric = '0123456789';
   var punctuation = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
