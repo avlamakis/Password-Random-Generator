@@ -1,41 +1,38 @@
 // Assignment code here
-var password = document.getElementById("password");
-
-var generatePassword = function () {
-    // Prompt for password criteria
-    var passwordCriteria = window.prompt("Which would you like to include in your password? 1 for LOWERCASE, 2 for UPPERCASE, 3 for NUMERIC, 4 for SPECIAL CHARACTERS, 5 for ALL");
-
-      // validate prompt answer
-  if (passwordCriteria === "" || passwordCriteria === null) {
-    window.alert("You need to provide a valid answer! Please try again.");
-    // use return to call it again and stop the rest of this function from running
-    return fightOrSkip();
+function generatePassword( len ) {
+  var length = (len)?(len):(8,128);
+  var string = "abcdefghijklmnopqrstuvwxyz"; //to upper 
+  var numeric = '0123456789';
+  var punctuation = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+  var password = "";
+  var character = "";
+  var crunch = true;
+  while( password.length<length ) {
+      entity1 = Math.ceil(string.length * Math.random()*Math.random());
+      entity2 = Math.ceil(numeric.length * Math.random()*Math.random());
+      entity3 = Math.ceil(punctuation.length * Math.random()*Math.random());
+      hold = string.charAt( entity1 );
+      hold = (password.length%2==0)?(hold.toUpperCase()):(hold);
+      character += hold;
+      character += numeric.charAt( entity2 );
+      character += punctuation.charAt( entity3 );
+      password = character;
   }
-
-    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var passwordLength = '8,128'
-    var password = "";
-
-    for (var i = 0; i <= passwordLength; i++) {
-        var randomNumber = Math.floor(Math.random() * chars.length);
-        password += chars.substring(randomNumber, randomNumber + 1);
-    }
-    document.getElementById("password").value = password;
+  password=password.split('').sort(function(){return 0.5-Math.random()}).join('');
+  return password.substr(0,len);
 }
 
-// Ask user how long they would like the password to be? Minimum of 8 characters and a max of 128 characters
-// Ask the user to confirm whether or not to include lowercase, uppercase, numeric, and/or special character
-
+console.log( generatePassword() );
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-    passwordText.value = password;
+  passwordText.value = password;
 
 }
 
