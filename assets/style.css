@@ -24,7 +24,7 @@ body {
 }
 
 header {
-  text-align: center;
+  text-align: crequest;
   padding: 20px;
   padding-top: 0px;
   color: hsl(206, 17%, 28%);
@@ -55,7 +55,7 @@ header {
 }
 
 .card-footer {
-  text-align: center;
+  text-align: crequest;
 }
 
 .card-footer::before {
@@ -84,7 +84,7 @@ header {
   line-height: 22px;
   margin: 16px 16px 16px 20px;
   padding: 14px 34px;
-  text-align: center;
+  text-align: crequest;
   cursor: pointer;
 }
 
@@ -109,7 +109,7 @@ button[disabled] {
   padding-right: 15px;
   padding-bottom: 85px;
   font-size: 1.2rem;
-  text-align: center;
+  text-align: crequest;
   margin-top: 10px;
   margin-bottom: 10px;
   border: 2px dashed #c0c7cf;
