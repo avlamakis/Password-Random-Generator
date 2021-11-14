@@ -21,15 +21,9 @@ var toUpper = function (convert) {
     return convert.toUpperCase();
 };
 
-var get = document.querySelector("#generate");
-
 // allows for uppercase conversion on alphabet variable
 alphabet1 = alphabet.map(toUpper);
 
-get.addEventListener("click", function () {
-    password = generatePassword();
-    document.getElementById("password").placeholder = password;
-});
 
 function generatePassword() {
     // Asks for users confirmation of character length
@@ -60,9 +54,9 @@ function generatePassword() {
    
 
     // confirmation of all 4 input options
-    else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
+    else if (confirmCharacters && confirmNumbers && confirmUppercase && confirmLowercase) {
 
-        choices = character.concat(number, alpha, alpha2);
+        choices = characters.concat(numbers, alphabet, alphabet1);
     }
     // confirmation scenarios for if only 3 input options are selected
     else if (confirmCharacters && confirmNumbers && confirmUppercase) {
@@ -110,7 +104,29 @@ function generatePassword() {
     else if (confirmUppercase) {
         choices = space.concat(alphabet1);
     };
-  };
+
+      // this helps generate the length of the password as refernced above at the start
+      var password = [];
+
+ 
+      //randomizes the selections for each input selected
+      for (var i = 0; i < request; i++) {
+          var pickChoices = choices[Math.floor(Math.random() * choices.length)];
+          password.push(pickChoices);
+      }
+
+      // utilized w3 and github resources to utilize the join method combining the array and strings
+    var password = password.join("");
+    UserInput(password);
+    return password;
+}
+// This puts the password value within the textbox specified
+
+function UserInput(password) {
+    document.getElementById("password").textContent = password;
+
+};
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
