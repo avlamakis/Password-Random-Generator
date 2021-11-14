@@ -12,3 +12,4 @@ Made by myself Alexandros Vlamakis.  Utilized resources from W3 and other GITHUB
 ## Link
 
 ## Screenshot
+![Random Password Generator ScreenShot](https://user-images.githubusercontent.com/91172337/141665145-ed9f5c56-1a1b-4beb-90fb-ec0a5ebd190f.png)
