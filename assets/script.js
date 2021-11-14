@@ -17,8 +17,8 @@ space = [];
 
 var choices;
 // converts letters to uppercase 
-var toUpper = function (x) {
-    return x.toUpperCase();
+var toUpper = function (convert) {
+    return convert.toUpperCase();
 };
 
 var get = document.querySelector("#generate");
@@ -52,62 +52,63 @@ function generatePassword() {
         confirmNumbers = confirm("Would you like to include numbers?");
     };
 
-    // Else if for 4 negative options
+    // Return if statement if no options are selected.
     if (!confirmCharacters && !confirmNumbers && !confirmUppercase && !confirmLowercase) {
-        choices = alert("You must choose a criteria!");
+        choices = alert("You must choose a character to include!");
 
     }
-    // First if statement that uses user input prompts to determine choices
-    // Else if for 4 positive options
+   
+
+    // confirmation of all 4 input options
     else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
 
         choices = character.concat(number, alpha, alpha2);
     }
-    // Else if for 3 positive options
-    else if (confirmCharacter && confirmNumber && confirmUppercase) {
-        choices = character.concat(number, alpha2);
+    // confirmation scenarios for if only 3 input options are selected
+    else if (confirmCharacters && confirmNumbers && confirmUppercase) {
+        choices = characters.concat(numbers, alphabet1);
     }
-    else if (confirmCharacter && confirmNumber && confirmLowercase) {
-        choices = character.concat(number, alpha);
+    else if (confirmCharacters && confirmNumbers && confirmLowercase) {
+        choices = characters.concat(numbers, alphabet);
     }
-    else if (confirmCharacter && confirmLowercase && confirmUppercase) {
-        choices = character.concat(alpha, alpha2);
+    else if (confirmCharacters && confirmLowercase && confirmUppercase) {
+        choices = characters.concat(alphabet, alphabet1);
     }
-    else if (confirmNumber && confirmLowercase && confirmUppercase) {
-        choices = number.concat(alpha, alpha2);
+    else if (confirmNumbers && confirmLowercase && confirmUppercase) {
+        choices = numbers.concat(alphabet, alphabet1);
     }
-    // Else if for 2 positive options 
-    else if (confirmCharacter && confirmNumber) {
-        choices = character.concat(number);
+    // confirmation scenarios for if only 2 input options are selected
+    else if (confirmCharacters && confirmNumbers) {
+        choices = characters.concat(numbers);
 
-    } else if (confirmCharacter && confirmLowercase) {
-        choices = character.concat(alpha);
+    } else if (confirmCharacters && confirmLowercase) {
+        choices = characters.concat(alphabet);
 
-    } else if (confirmCharacter && confirmUppercase) {
-        choices = character.concat(alpha2);
+    } else if (confirmCharacters && confirmUppercase) {
+        choices = character.concat(alphabet1);
     }
-    else if (confirmLowercase && confirmNumber) {
-        choices = alpha.concat(number);
+    else if (confirmLowercase && confirmNumbers) {
+        choices = alphabet.concat(numbers);
 
     } else if (confirmLowercase && confirmUppercase) {
-        choices = alpha.concat(alpha2);
+        choices = alphabet.concat(alphabet1);
 
-    } else if (confirmNumber && confirmUppercase) {
-        choices = number.concat(alpha2);
+    } else if (confirmNumbers && confirmUppercase) {
+        choices = numbers.concat(alphabet1);
     }
-    // Else if for 1 positive option
-    else if (confirmCharacter) {
-        choices = character;
+    // Confirmation of input of only 1 selection
+    else if (confirmCharacters) {
+        choices = characters;
     }
-    else if (confirmNumber) {
-        choices = number;
+    else if (confirmNumbers) {
+        choices = numbers;
     }
     else if (confirmLowercase) {
-        choices = alpha;
+        choices = alphabet;
     }
-    // Created space variable to fill uppercase conversion
+    // Conversion for uppercase letters reference space
     else if (confirmUppercase) {
-        choices = space.concat(alpha2);
+        choices = space.concat(alphabet1);
     };
   };
 
